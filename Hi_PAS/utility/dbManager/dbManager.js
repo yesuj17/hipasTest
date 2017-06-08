@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var generateSchema = require('generate-schema');
 var realTimeChartData = require('../../models/wems/realTimeChartData.json');
+var dbConfig = require('../../config/dbConfig');
 
 var modelNameList = [];
 
@@ -25,7 +26,7 @@ module.exports.connect = function () {
         console.log("Connected to mongo server");
     });
 
-    mongoose.connect('mongodb://localhost:27017/mongodb_hipas', function () { /* dummy function */ })
+    mongoose.connect(dbConfig.urls, function () { /* dummy function */ })
         .then(() => {
             registDBSchemas();
         })

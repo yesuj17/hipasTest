@@ -1,4 +1,5 @@
-﻿module.exports = function (app, express) {
+﻿var webServerConfig = require('../config/webServerConfig');
+module.exports = function (app, express) {
     var path = require('path');
     var favicon = require('serve-favicon');
     var logger = require('morgan');
@@ -19,7 +20,7 @@
     app.use(express.static(path.join(__dirname, '../controllers')));
 
     /* Start Web Server */
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', webServerConfig.port);
     var server = app.listen(app.get('port'), function () {
         console.log('Express server listening on port ' + server.address().port);
     });

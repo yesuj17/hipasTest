@@ -31,6 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="config\dbConfig.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="config\webserverConfig.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="config\passportConfig.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="restfulAPIHandlers\pdasRestfulAPIHandler.js" />
     <Compile Include="restfulAPIHandlers\pmsRestfulAPIHandler.js" />
     <Compile Include="restfulAPIHandlers\wemsRestfulAPIHandler.js">
@@ -88,6 +97,7 @@
     <Folder Include="models\pdas\" />
     <Folder Include="models\pms\" />
     <Folder Include="models\wems\" />
+    <Folder Include="config\" />
     <Folder Include="restfulAPIHandlers\" />
     <Folder Include="services\" />
     <Folder Include="public\angular-chart\" />
