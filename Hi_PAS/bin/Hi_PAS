@@ -1,0 +1,3 @@
+﻿#!/usr/bin/env node
+var debug = require('debug')('AngularChart_0419');
+var app = require('../app');

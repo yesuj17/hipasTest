@@ -1,0 +1,28 @@
+﻿doctype html
+html
+  head
+    title Angular Chart
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js')
+    script(src='/chart/Chart.min.js')
+    script(src='/angular-chart/angular-chart.js')
+    script(src='/socket.io/socket.io.js')
+    style.
+      body
+      {
+          font-family: TradeGothic, sans-serif;
+          position: absolute;
+          height: 768px;
+          width: 1024px;
+      }
+  body(ng-app='myApp', ng-controller='myController', style='margin: 20px 20px 20px 20px;')
+    .well
+      h1(align='center') {{appName}}
+    .well
+      canvas#myChart(style='height:500px;')
+    .pull-left
+      select.form-control(name='chart', ng-init='selectedChart = chartList[0]', ng-model='selectedChart', ng-options='i.diplayName for i in chartList', ng-change='update()')
+    .pull-right
+      button.btn.btn-primary.btn-md(ng-click='startDrawChart()', ng-disabled='timerRunning', style='margin: 5px 5px 5px 5px;') Start
+      button.btn.btn-primary.btn-md(ng-click='stopDrawChart()', ng-disabled='!timerRunning', style='margin: 5px 5px 5px 5px;') Stop
+    script(src='/wems/wemsController.js')
