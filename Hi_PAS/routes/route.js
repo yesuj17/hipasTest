@@ -95,24 +95,6 @@ module.exports = function (app, io) {
             index = 0;
         });
     });
-
-    /* Sample CODE 
-    app.post('/api/realChart', function (req, res) {
-
-        var realTimeChartData = new RealTimeChartData();
-        realTimeChartData.label = req.body.label;
-        realTimeChartData.point = req.body.point;
-        if (!dbManager.saveData(realTimeChartData)) {
-            res.json({ result: 0 });
-            return;
-        }
-
-        /// var jsonRealTimeChartData = JSON.stringify(realTimeChartData);
-        /// res.send(jsonRealTimeChartData);
-        res.send(realTimeChartData);
-        console.log("MondoDB Save Success.");
-    });
-    */
 }
 
 /* Restful API Handler */
@@ -134,30 +116,18 @@ function setDELETEHandler(app, data) {
 
 /* Generate Chart Data */
 function generateChartData(webSocket) {
-    realTimeData = {
-        "label": index,
-        "point": Math.sin(index)
-    };
+    var realTimeChartData = require("../models/wems/realTimeChartData.json");
+    realTimeChartData.label = index;
+    realTimeChartData.point = Math.sin(index);
 
-    /// Save Data in Mongo DB
-    /* XXX
-    var realTimeChartData = new RealTimeChartData();
-    realTimeChartData.label = realTimeData.label;
-    realTimeChartData.point = realTimeData.point;
-    */
-    
-    var test = require("../models/wems/realTimeChartData.json");
-    test.label = realTimeData.label;
-    test.point = realTimeData.point;
-
-    if (!dbManager.saveData('realTimeChartData', test)) {
+    if (!dbManager.saveData('realTimeChartData', realTimeChartData)) {
         console.log("MondoDB Save Fail.");
     }
 
     console.log("MondoDB Save Success.");
 
     /// Update Client Chart Data
-    webSocket.emit('updateChartData', realTimeData);
+    webSocket.emit('updateChartData', realTimeChartData);
     console.log("Update Client Chart Data.");
 
     index++;

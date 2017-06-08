@@ -38,13 +38,13 @@ module.exports.connect = function () {
 /// Save to Mongo DB
 module.exports.saveData = function (modelName, data) {
     if (data) {
-        if (!modelNameList.find(modelName)) {
+        if (modelNameList.indexOf(modelName) == -1) {
             registDBSchema(data);
         }
 
         var Model = mongoose.model(modelName);
 
-        var model = new Model();
+        var model = new Model(data);
         model.save(function (err) {
             if (err) {
                 console.error(err);
