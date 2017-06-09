@@ -120,7 +120,7 @@ function generateChartData(webSocket) {
     realTimeChartData.label = index;
     realTimeChartData.point = Math.sin(index);
 
-    if (!dbManager.saveData('realTimeChartData', realTimeChartData)) {
+    if (!dbManager.saveData(realTimeChartData)) {
         console.log("MondoDB Save Fail.");
     }
 

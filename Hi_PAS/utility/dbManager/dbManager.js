@@ -2,18 +2,19 @@
 /// Regist Mongo DB Schema
 var mongoose = require('mongoose');
 var generateSchema = require('generate-schema');
-var realTimeChartData = require('../../models/wems/realTimeChartData.json');
-var dbConfig = require('../../config/dbConfig');
+var systemConfig = require('../../config/systemConfig');
 
-var modelNameList = [];
+/// WEMS Model Schema
+var realTimeChartDataSchema = generateSchema.mongoose(require('../../models/wems/realTimeChartData.json'));
 
-var wemsModelList = [['realTimeChartData', realTimeChartData]];
-var pmsModelList;
-var pdasModelList;
+/// PMS Model Schema
+/// PdAS Model Schema
 
-module.exports.registDBSchemas = function () {
-    wemsModelList.forEach(registDBSchema);
-}
+var modelSchemaList = [];
+
+var wemsModelSchemaList = [['realTimeChartData', realTimeChartDataSchema]];
+var pmsModelSchemaList;
+var pdasModelSchemaList;
 
 /// Connect to Mongo DB
 module.exports.connect = function () {
@@ -26,9 +27,10 @@ module.exports.connect = function () {
         console.log("Connected to mongo server");
     });
 
-    mongoose.connect(dbConfig.urls, function () { /* dummy function */ })
+    mongoose.connect(systemConfig.db.urls, function () { /* dummy function */ })
         .then(() => {
             registDBSchemas();
+            return true;
         })
         .catch(err => { /// mongoose connection error will be handled here
             console.error('App starting error:', err.stack);
@@ -37,14 +39,16 @@ module.exports.connect = function () {
 }
 
 /// Save to Mongo DB
-module.exports.saveData = function (modelName, data) {
+module.exports.saveData = function (data) {
     if (data) {
-        if (modelNameList.indexOf(modelName) == -1) {
-            registDBSchema(data);
+        var modelSchema = generateSchema.mongoose(data);
+        var collectionName = findCollectionName(modelSchema);
+
+        if (!collectionName) {
+            return false;
         }
 
-        var Model = mongoose.model(modelName);
-
+        var Model = mongoose.model(collectionName);
         var model = new Model(data);
         model.save(function (err) {
             if (err) {
@@ -59,24 +63,51 @@ module.exports.saveData = function (modelName, data) {
 
 /// Regist DB Schemas
 function registDBSchemas() {
-    if (wemsModelList) {
-        wemsModelList.forEach(registDBSchema);
+    if (wemsModelSchemaList) {
+        wemsModelSchemaList.forEach(registDBSchema);
     }
 
-    if (pmsModelList) {
-        pmsModelList.forEach(registDBSchema);
+    if (pmsModelSchemaList) {
+        pmsModelSchemaList.forEach(registDBSchema);
     }
 
-    if (pdasModelList) {
-        pdasModelList.forEach(registDBSchema);
+    if (pdasModelSchemaList) {
+        pdasModelSchemaList.forEach(registDBSchema);
     }
 }
 
 /// Regist DB Schema
 function registDBSchema(model) {
     var Schema = mongoose.Schema;
-    var modelSchema = new Schema(generateSchema.mongoose(model[1]));
+    var modelSchema = new Schema(model[1]);
     module.exports = mongoose.model(model[0], modelSchema);
 
-    modelNameList.push(model[0]);
+    modelSchemaList.push(model[1]);
+}
+
+/// Fine Collection Name
+function findCollectionName(modelSchema) {
+    var collectionName;
+    wemsModelSchemaList.forEach(function (data) {
+        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+            collectionName = data[0];
+            return;
+        }
+    });
+
+    pmsModelSchemaList.forEach(function (data) {
+        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+            collectionName = data[0];
+            return;
+        }
+    });
+
+    pdasModelSchemaList.forEach(function (data) {
+        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+            collectionName = data[0];
+            return;
+        }
+    });
+
+    return collectionName;
 }
