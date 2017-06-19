@@ -8,3 +8,5 @@ G:\02_SourceCode\20_Hi_PAS\Hi_PAS_SocketIO_20170608\Hi_PAS\obj\Debug\Hi_PAS.njsp
 G:\02_SourceCode\20_Hi_PAS\Hi_PAS_SocketIO_20170608\Hi_PAS\bin\Microsoft.NodejsTools.WebRole.dll
 E:\100_POJECT\190_한화기계\194_Hi_PAS\01_Source Code\hipasTest\Hi_PAS\obj\Debug\Hi_PAS.njsprojResolveAssemblyReference.cache
 E:\100_POJECT\190_한화기계\194_Hi_PAS\01_Source Code\hipasTest\Hi_PAS\bin\Microsoft.NodejsTools.WebRole.dll
+E:\100_POJECT\190_한화기계\194_Hi_PAS\01_Source Code\hipasTest_Sample\Hi_PAS\obj\Debug\Hi_PAS.njsprojResolveAssemblyReference.cache
+E:\100_POJECT\190_한화기계\194_Hi_PAS\01_Source Code\hipasTest_Sample\Hi_PAS\bin\Microsoft.NodejsTools.WebRole.dll

@@ -88,26 +88,32 @@ function registDBSchema(model) {
 /// Fine Collection Name
 function findCollectionName(modelSchema) {
     var collectionName;
-    wemsModelSchemaList.forEach(function (data) {
-        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
-            collectionName = data[0];
-            return;
-        }
-    });
+    if (wemsModelSchemaList) {
+        wemsModelSchemaList.forEach(function (data) {
+            if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+                collectionName = data[0];
+                return;
+            }
+        });
+    }
 
-    pmsModelSchemaList.forEach(function (data) {
-        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
-            collectionName = data[0];
-            return;
-        }
-    });
+    if (pmsModelSchemaList) {
+        pmsModelSchemaList.forEach(function (data) {
+            if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+                collectionName = data[0];
+                return;
+            }
+        });
+    }
 
-    pdasModelSchemaList.forEach(function (data) {
-        if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
-            collectionName = data[0];
-            return;
-        }
-    });
+    if (pdasModelSchemaList) {
+        pdasModelSchemaList.forEach(function (data) {
+            if (JSON.stringify(modelSchema) == JSON.stringify(data[1])) {
+                collectionName = data[0];
+                return;
+            }
+        });
+    }
 
     return collectionName;
 }

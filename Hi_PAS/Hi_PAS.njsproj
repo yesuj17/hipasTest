@@ -483,11 +483,13 @@
     <Folder Include="public\angular-chart.js_v1.1.1\tmp\bower_components\chart.js\src\elements\" />
     <Folder Include="public\angular-chart.js_v1.1.1\tmp\bower_components\chart.js\src\scales\" />
     <Folder Include="public\angular-chart.js_v1.1.1\tmp\bower_components\chart.js\test\" />
+    <Folder Include="public\angular-chart\" />
     <Folder Include="public\bootstrap_v3.3.7\" />
     <Folder Include="public\bootstrap_v3.3.7\css\" />
     <Folder Include="public\bootstrap_v3.3.7\fonts\" />
     <Folder Include="public\bootstrap_v3.3.7\js\" />
     <Folder Include="public\chart.js_v2.6.0\" />
+    <Folder Include="public\chart\" />
     <Folder Include="restfulAPIHandlers\" />
     <Folder Include="services\" />
     <Folder Include="public\css\" />
@@ -495,6 +497,7 @@
     <Folder Include="public\js\" />
     <Folder Include="typings\globals\bootstrap\" />
     <Folder Include="typings\globals\mongoose\" />
+    <Folder Include="typings\globals\phantomjs\" />
     <Folder Include="typings\globals\socket.io\" />
     <Folder Include="typings\modules\" />
     <Folder Include="typings\modules\body-parser\" />
@@ -543,6 +546,7 @@
     <TypeScriptCompile Include="typings\globals\mongoose\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\morgan\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\phantomjs\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\serve-favicon\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\serve-static\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\socket.io\index.d.ts" />
