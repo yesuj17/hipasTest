@@ -1,0 +1,13 @@
+﻿{            
+    "TimeStamp": 0,            
+    "SC_No": 0,
+    "DrivingMotor" : [                   
+        { "current" :  0}    
+    ],
+    "HoistingMotor": [
+        { "current": 0 }
+    ],     
+    "ForkMotor" : [                   
+        { "current" : 0}    
+    ]
+}

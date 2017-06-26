@@ -1,0 +1,12 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "machineErrorData",
+  "type": "object",
+  "properties": {
+    "SCNo":     {"type": "integer"},
+    "CurrDate": {"type": "string", "format": "date-time"},
+    "JobNo":    {"type": "integer"},
+    "ErrCode":  {"type": "integer"},
+    "ErrMsg":   {"type": "string"}
+  }
+}

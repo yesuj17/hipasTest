@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "machineRealTimeData",
+  "type": "object",
+  "properties": {
+    "TimeStamp":  {"type": "string", "format": "date-time"},
+    "SC_No":      {"type": "integer"},
+    "DrivingMotor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {"current": { "type": "number" }}
+      }
+    },
+    "HoistingMotor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {"current": { "type": "number" }}
+      }
+    },
+    "ForkMotor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {"current": { "type": "number" }}
+      }
+    }
+  }
+}
