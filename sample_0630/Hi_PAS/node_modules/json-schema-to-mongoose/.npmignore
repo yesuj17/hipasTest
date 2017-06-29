@@ -1,0 +1,11 @@
+node_modules
+obj
+bin
+*~
+.DS_Store
+\#*\#
+*.sln
+*.suo
+*.njsproj
+*.tmp
+*.dat

@@ -1,0 +1,23 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "machineAnalysisData",
+  "type": "object",
+  "properties": {
+    "AnalysisDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "AnalysisData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "SC_No": { "type": "number" },
+          "Power": { "type": "number" },
+          "CycleTime": { "type": "number" },
+          "PowerEfficiency": { "type": "number" }
+        }
+      }
+    }
+  }
+}
