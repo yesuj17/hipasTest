@@ -1,0 +1,7 @@
+﻿{
+    "SCNo": "integer",
+    "CurrDate": "datetime",
+    "JobNo": "integer",
+    "ErrCode": "integer",
+    "ErrMsg": "string"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "AnalysisDate": "datetime",
+  "AnalysisDataPerDate": [
+    {
+      "SCNo": "number",
+      "Power": "number",
+      "CycleTime": "number",
+      "PowerEfficiency": "number"
+    }
+  ]
+}
